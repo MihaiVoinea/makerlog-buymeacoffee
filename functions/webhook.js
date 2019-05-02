@@ -15,7 +15,7 @@ exports.handler = (event, context, callback) => {
 
     axios.post(`https://api.getmakerlog.com/apps/webhook/${secret}`, {
       content: message,
-      done: false,
+      done: true,
     }).then(() => callback(null, {
       statusCode: 200,
       body: message,

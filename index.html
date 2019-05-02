@@ -37,8 +37,8 @@
     console.log(resultEl);
 
     function generateWebhookUrl(e) {
-      const secret = bmcInput.value.match(/(?<=(https:\/\/api\.getmakerlog\.com\/apps\/webhook\/)).*/)[0];
-      const username = makerlogInput.value.match(/(?<=(buymeacoffee\.com\/)).*$/)[0];
+      const secret = makerlogInput.value.match(/(?<=(https:\/\/api\.getmakerlog\.com\/apps\/webhook\/)).*/)[0];
+      const username = bmcInput.value.match(/(?<=(buymeacoffee\.com\/)).*$/)[0];
       if(secret !== null && username !== null) {
         resultEl.value = window.location.protocol + "//" + window.location.hostname + "/.netlify/functions/webhook/" + secret + "/" + username;
       }
