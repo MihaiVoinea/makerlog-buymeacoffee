@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Buy Me A Coffee for Makerlog</title>
+  <style>
+    body{
+      font-family: sans-serif;
+    }
+  main{
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (min-width: 1024px) {
+    main {max-width: 50%; margin: 0 auto;}
+  }  
+  </style>
+</head>
+<body>
+  <main>
+    <label for="bmc" >Enter your Buy Me A Coffee profile:</label>
+    <input type="text" name="bmc" id="bmc">
+    <label for="makerlog">Enter your Makerlog Webhook:</label>
+    <input type="text" name="makerlog" id="makerlog">
+    <label for="result">Your webhook is:</label>
+    <input type="text" name="result" disabled="true" id="result">
+    <p>Enter this webhook on Buy Me A Coffee. <a href="#"><br/>Video tutorial here!</a></p>
+  </main>
+  <script>
+    const bmcInput = document.getElementById('bmc');
+    const makerlogInput = document.getElementById('makerlog');
+    const resultEl = document.getElementById('result');
+    bmcInput.addEventListener('input', generateWebhookUrl);
+    makerlogInput.addEventListener('input', generateWebhookUrl);
+
+    console.log(resultEl);
+
+    function generateWebhookUrl(e) {
+      const secret = bmcInput.value.match(/(?<=(https:\/\/api\.getmakerlog\.com\/apps\/webhook\/)).*/)[0];
+      const username = makerlogInput.value.match(/(?<=(buymeacoffee\.com\/)).*$/)[0];
+      if(secret !== null && username !== null) {
+        resultEl.value = window.location.protocol + "//" + window.location.hostname + "/.netlify/functions/webhook/" + secret + "/" + username;
+      }
+    }
+  </script>
+</body>
+</html>
