@@ -18,7 +18,7 @@
     <label for="makerlog">Enter your Makerlog Webhook:</label>
     <input type="text" name="makerlog" id="makerlog">
     <label for="result">Your webhook is:</label>
-    <input type="text" name="result" disabled="true" id="result">
+    <input type="text" name="result" readonly="readonly" id="result" onclick="this.select();" />
     <p>&uarr; Enter this webhook on Buy Me A Coffee.</p>
     <strong>IMPORTANT: Do not share your webhook url anywhere!</strong><br/>
     <a href="https://youtu.be/ODtczftXi_E">Video tutorial here &rarr;</a>
@@ -38,8 +38,6 @@
     const resultEl = document.getElementById('result');
     bmcInput.addEventListener('input', generateWebhookUrl);
     makerlogInput.addEventListener('input', generateWebhookUrl);
-
-    console.log(resultEl);
 
     function generateWebhookUrl(e) {
         const secret = makerlogInput.value.match(/(?<=(https:\/\/api\.getmakerlog\.com\/apps\/webhook\/)).*/)[0];

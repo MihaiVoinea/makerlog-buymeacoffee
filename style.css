@@ -92,3 +92,7 @@ p   {
     width: 30px;
     margin-right: 5px;
 }
+
+#result {
+    cursor: pointer;
+}
