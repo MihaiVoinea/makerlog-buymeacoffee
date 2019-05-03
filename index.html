@@ -1,39 +1,38 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Buy Me A Coffee for Makerlog</title>
-  <style>
-    body{
-      font-family: sans-serif;
-    }
-  main{
-    display: flex;
-    flex-direction: column;
-  }
-  @media screen and (min-width: 1024px) {
-    main {max-width: 50%; margin: 0 auto;}
-  }  
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Buy Me A Coffee for Makerlog</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:700|Cookie" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <main>
-    <label for="bmc" >Enter your Buy Me A Coffee profile:</label>
+<header>
+    <h1>Buy Me A Coffee for Makerlog</h1>
+</header>
+<main>
+    <label for="bmc">Enter your Buy Me A Coffee profile:</label>
     <input type="text" name="bmc" id="bmc">
     <label for="makerlog">Enter your Makerlog Webhook:</label>
     <input type="text" name="makerlog" id="makerlog">
     <label for="result">Your webhook is:</label>
     <input type="text" name="result" disabled="true" id="result">
-    <p>Enter this webhook on Buy Me A Coffee.<br/><strong>IMPORTANT! Do not share your webhook url anywhere!</strong> <br/><br/><a href="https://youtu.be/ODtczftXi_E">Video tutorial here!</a></p>
-    
-    <div style="text-align: center; margin-top: 50px;">
-      If you found this is useful, you can buy me a coffee:<br>
+    <p>&uarr; Enter this webhook on Buy Me A Coffee.</p>
+    <strong>IMPORTANT: Do not share your webhook url anywhere!</strong><br/>
+    <a href="https://youtu.be/ODtczftXi_E">Video tutorial here &rarr;</a>
+</main>
+<footer>
+    Made by <a href="https://getmakerlog.com/@voinea">Mihai Voinea</a><br/>
+    If you found this is useful, you can buy me a coffee:<br/>
 
-      <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#FFFFFF !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing:0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#FFFFFF !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/voinea"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-    </div>
-  </main>
-  <script>
+    <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/voinea">
+        <img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee">
+        Buy me a coffee
+    </a>
+</footer>
+<script>
     const bmcInput = document.getElementById('bmc');
     const makerlogInput = document.getElementById('makerlog');
     const resultEl = document.getElementById('result');
@@ -43,12 +42,12 @@
     console.log(resultEl);
 
     function generateWebhookUrl(e) {
-      const secret = makerlogInput.value.match(/(?<=(https:\/\/api\.getmakerlog\.com\/apps\/webhook\/)).*/)[0];
-      const username = bmcInput.value.match(/(?<=(buymeacoffee\.com\/)).*$/)[0];
-      if(secret !== null && username !== null) {
-        resultEl.value = window.location.protocol + "//" + window.location.hostname + "/.netlify/functions/webhook/" + secret + "/" + username;
-      }
+        const secret = makerlogInput.value.match(/(?<=(https:\/\/api\.getmakerlog\.com\/apps\/webhook\/)).*/)[0];
+        const username = bmcInput.value.match(/(?<=(buymeacoffee\.com\/)).*$/)[0];
+        if (secret !== null && username !== null) {
+            resultEl.value = window.location.protocol + "//" + window.location.hostname + "/.netlify/functions/webhook/" + secret + "/" + username;
+        }
     }
-  </script>
+</script>
 </body>
 </html>
