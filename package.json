@@ -9,7 +9,7 @@
   "author": "Mihai Voinea <hi@voinea.me>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.1"
+    "axios": "^0.19.2"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
